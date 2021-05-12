@@ -13,5 +13,3 @@ You can either import data from the 'Phone_catalog.sql' which is located at the 
 `npm install`
 
 `npm start`
-
-`npm run test`

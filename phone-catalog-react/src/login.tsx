@@ -10,18 +10,18 @@ export default function Login(props) {
     validateForm();
   }, [email, password]);
 
-  const validateEmail = text => /@/.test(text);
+  const validateEmail = (text) => /@/.test(text);
 
   const validateForm = () => {
     setIsLoginDisabled(password.length < 8 || !validateEmail(email));
   };
 
-  const handleEmailBlur = evt => {
+  const handleEmailBlur = (evt) => {
     const emailValue = evt.target.value.trim();
     setEmail(emailValue);
   };
 
-  const handlePasswordChange = evt => {
+  const handlePasswordChange = (evt) => {
     const passwordValue = evt.target.value.trim();
     setPassword(passwordValue);
   };
@@ -33,18 +33,8 @@ export default function Login(props) {
 
   return (
     <form>
-      <input
-        type="email"
-        placeholder="email"
-        className="mx-auto my-2"
-        onBlur={handleEmailBlur}
-      />
-      <input
-        type="password"
-        className="my-2"
-        onChange={handlePasswordChange}
-        value={password}
-      />
+      <input type="email" placeholder="email" className="mx-auto my-2" onBlur={handleEmailBlur} />
+      <input type="password" className="my-2" onChange={handlePasswordChange} value={password} />
       <input
         type="button"
         className="btn btn-primary"

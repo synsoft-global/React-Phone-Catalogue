@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/no-var-requires */
 import React, { useEffect } from 'react';
 import {
   Grid,
@@ -24,7 +28,7 @@ import {
 import CloseIcon from '@material-ui/icons/Close';
 import SendIcon from '@material-ui/icons/Send';
 import { useHistory, useLocation } from 'react-router-dom';
-import placeholder from '../../images/place.png';
+import placeholder from '../../assets/place.png';
 import { getApiCall, UpdateApiCall, postApiCall, jsonParser } from '../../comman/services';
 import { BASE_URL } from '../../app-config';
 const queryString = require('query-string');
@@ -198,9 +202,9 @@ export default function AddEditPhone() {
   const FromSubmit = (e) => {
     e.preventDefault();
     //console.log("from submited value is here ",e);
-    let status = state.status + '&' + releaseDate;
-    let dimensions = state.diamention1 + '*' + state.diamention2 + '*' + state.diamention3;
-    let postData = {
+    const status = state.status + '&' + releaseDate;
+    const dimensions = state.diamention1 + '*' + state.diamention2 + '*' + state.diamention3;
+    const postData = {
       name: state.name,
       networkTechnology: state.network,
       lanch: {
@@ -297,7 +301,7 @@ export default function AddEditPhone() {
             setOpened(true);
           });
       } else {
-        let formData = new FormData();
+        const formData = new FormData();
         formData.append('image', imageData, imageData.name);
         // formData.append("image", state.file);
         const methodName = 'phones/upload';
@@ -335,7 +339,7 @@ export default function AddEditPhone() {
       if (!imageData) {
         postData.imageFileName.image = state.imageName;
         const methodName = 'phones/update';
-        var parameters = 'id=' + state.id;
+        const parameters = 'id=' + state.id;
         UpdateApiCall(methodName, parameters, postData)
           .then((response: any) => {
             SettoastMessage('Phone detail updated sucessfully!');
@@ -352,7 +356,7 @@ export default function AddEditPhone() {
             setOpened(true);
           });
       } else {
-        let formData = new FormData();
+        const formData = new FormData();
         formData.append('image', imageData, imageData.name);
         // formData.append("image", state.file);
         const methodName = 'phones/upload';
@@ -362,7 +366,7 @@ export default function AddEditPhone() {
             if (response.message === 'image uploded successfully') {
               postData.imageFileName.image = response.file.filename;
               const methodName = 'phones/update';
-              var parameters = 'id=' + state.id;
+              const parameters = 'id=' + state.id;
               UpdateApiCall(methodName, parameters, postData)
                 .then((response: any) => {
                   console.log('update user data is here ', response);
@@ -610,18 +614,18 @@ export default function AddEditPhone() {
   const GetPhoneDetailById = (id) => {
     console.log('get phone state here ', id);
     const methodName = 'phones/getPhoneDetails';
-    var parameters = 'id=' + id;
+    const parameters = 'id=' + id;
     getApiCall(methodName, parameters)
       .then((response: any) => {
         //  console.log('user data for edit profile is here ',response);
         if (response.statuscode) {
-          let temp: any = response.phone_info[0];
-          var res = jsonParser(temp.lanch).status.split('&');
+          const temp: any = response.phone_info[0];
+          const res = jsonParser(temp.lanch).status.split('&');
           console.log('data for edit profile is here ', response);
           setSelectedDate(jsonParser(temp.lanch).announced);
           setSelectedDate1(res[1]);
-          var daimention = jsonParser(temp.body).dimensions.split('*');
-          var misc = jsonParser(temp.misc).sar_eu.split('&');
+          const daimention = jsonParser(temp.body).dimensions.split('*');
+          const misc = jsonParser(temp.misc).sar_eu.split('&');
           setValues({
             id: query.phoneId,
             header: 'Edit',
@@ -755,16 +759,14 @@ export default function AddEditPhone() {
                       <FormControl
                         className={classes.formControl}
                         required
-                        error={state.neworkError}
-                      >
+                        error={state.neworkError}>
                         <InputLabel id="network-label1">Technology</InputLabel>
                         <Select
                           labelId="network-label2"
                           id="network-helper"
                           value={state.network}
                           onBlur={onKeyUp('network')}
-                          onChange={handleChange('network')}
-                        >
+                          onChange={handleChange('network')}>
                           {NetworkData.map((item) => (
                             <MenuItem key="{item}" value={item.name}>
                               {' '}
@@ -787,7 +789,7 @@ export default function AddEditPhone() {
                 </Grid>
                 <Grid item xs={12} sm={12} md={4} lg={4}>
                   <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                    <Grid container justify="space-around">
+                    <Grid container justifyContent="space-around">
                       <KeyboardDatePicker
                         disableToolbar
                         variant="inline"
@@ -817,8 +819,7 @@ export default function AddEditPhone() {
                       id="status"
                       value={state.status}
                       onChange={handleChange('status')}
-                      onBlur={onKeyUp('status')}
-                    >
+                      onBlur={onKeyUp('status')}>
                       <MenuItem value="Coming soon">Coming soon </MenuItem>
                       <MenuItem value="Available"> Available </MenuItem>
                       <MenuItem value="Sold out"> Sold out </MenuItem>
@@ -831,7 +832,7 @@ export default function AddEditPhone() {
                 </Grid>
                 <Grid item xs={12} sm={12} md={4} lg={4}>
                   <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                    <Grid container justify="space-around">
+                    <Grid container justifyContent="space-around">
                       <KeyboardDatePicker
                         disableToolbar
                         variant="inline"
@@ -1065,8 +1066,7 @@ export default function AddEditPhone() {
                       labelId="cardSlot-label"
                       id="cardSlot"
                       value={state.cardSlot}
-                      onChange={handleChange('cardSlot')}
-                    >
+                      onChange={handleChange('cardSlot')}>
                       <MenuItem value="Yes"> Yes </MenuItem>
                       <MenuItem value="No">No </MenuItem>
                     </Select>
@@ -1221,8 +1221,7 @@ export default function AddEditPhone() {
                       labelId="soundJack-label"
                       id="soundJack"
                       value={state.soundJack}
-                      onChange={handleChange('soundJack')}
-                    >
+                      onChange={handleChange('soundJack')}>
                       <MenuItem value="Yes"> Yes </MenuItem>
                       <MenuItem value="No">No </MenuItem>
                     </Select>
@@ -1282,8 +1281,7 @@ export default function AddEditPhone() {
                       labelId="nfc-label"
                       id="nfc"
                       value={state.nfc}
-                      onChange={handleChange('nfc')}
-                    >
+                      onChange={handleChange('nfc')}>
                       <MenuItem value="Yes"> Yes </MenuItem>
                       <MenuItem value="No">No </MenuItem>
                     </Select>
@@ -1307,8 +1305,7 @@ export default function AddEditPhone() {
                       labelId="radio-label"
                       id="radio"
                       value={state.radio}
-                      onChange={handleChange('radio')}
-                    >
+                      onChange={handleChange('radio')}>
                       <MenuItem value="Yes"> Yes </MenuItem>
                       <MenuItem value="No">No </MenuItem>
                     </Select>
@@ -1522,8 +1519,7 @@ export default function AddEditPhone() {
                     color="default"
                     className={classes.button}
                     startIcon={<CloseIcon />}
-                    onClick={() => FromClear()}
-                  >
+                    onClick={() => FromClear()}>
                     Clear
                   </Button>
                   <Button
@@ -1531,8 +1527,7 @@ export default function AddEditPhone() {
                     variant="contained"
                     color="primary"
                     className={classes.button}
-                    endIcon={<SendIcon />}
-                  >
+                    endIcon={<SendIcon />}>
                     Send
                   </Button>
                 </Grid>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { useEffect } from 'react';
@@ -6,7 +7,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { getApiCall, jsonParser, DeleteApiCall } from '../../comman/services';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import './allPhone.css';
+import '../css/allPhone.css';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import EditIcon from '@material-ui/icons/Edit';

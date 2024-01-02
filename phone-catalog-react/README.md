@@ -2,9 +2,9 @@
 
 `npm i`
 
-`npm start`
-
 `set NODE_OPTIONS=--openssl-legacy-provider`
+
+`npm start`
 
 It will up the frontend application on follwing path:
 

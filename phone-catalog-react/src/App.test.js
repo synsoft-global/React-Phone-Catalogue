@@ -1,7 +1,7 @@
 import React from 'react';
 import Enzyme, { mount } from 'enzyme';
 import { BrowserRouter } from 'react-router-dom';
-import AddEditPhone from './components/AllPhone/addEditPhone';
+import AddEditPhone from './components/pages/addEditPhone';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 Enzyme.configure({ adapter: new Adapter() });
 

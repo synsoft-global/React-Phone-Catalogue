@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect } from 'react';
 import '../../App.css';
-import './allPhone.css';
+import '../css/allPhone.css';
 import Moment from 'react-moment';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import {
@@ -239,7 +239,7 @@ export default function AllPhone() {
   };
   return (
     <div>
-      <Grid container direction="row" justify="center" alignItems="center">
+      <Grid container direction="row" justifyContent="center" alignItems="center">
         <Grid item xs={6} sm={10} md={10} lg={10}>
           <p className="textHeader">Phone Catalog list </p>
         </Grid>
@@ -321,7 +321,7 @@ export default function AllPhone() {
               rowsPerPage={config.rowsPerPage}
               page={page}
               onPageChange={handleChangePage}
-              onChangeRowsPerPage={handleChangeRowsPerPage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
             />
           </Paper>
         </Grid>

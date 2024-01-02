@@ -1,7 +1,9 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 
-export default function Login(props) {
-  const { email: propsEmail, password: propsPassword, dispatch } = props;
+export default function Login(props: any) {
+  const { email: propsEmail, password: propsPassword } = props;
   const [isLoginDisabled, setIsLoginDisabled] = React.useState(true);
   const [email, setEmail] = React.useState(propsEmail || '');
   const [password, setPassword] = React.useState(propsPassword || '');
@@ -27,7 +29,7 @@ export default function Login(props) {
   };
 
   const handleSubmit = () => {
-    dispatch('submit(email, password)');
+    // dispatch('submit(email, password)'); dispatch
     setIsLoginDisabled(true);
   };
 

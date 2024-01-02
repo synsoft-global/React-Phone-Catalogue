@@ -1,5 +1,6 @@
 /* eslint-disable no-useless-escape */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 /**
  * Defining regex function that validate email id onkeyup
  * @author Virendra Yadav
@@ -14,6 +15,7 @@ export const validateEmail = (value: string) => {
 export const validatePassword = (value: string) => {
   return value.length >= 8 && value.length <= 32;
 };
+
 /**
  * Defining  regex function that  password msut be alphanumaric  onkeyup
  * @author Virendra Yadav

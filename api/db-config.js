@@ -6,7 +6,7 @@
 const Config = {
     host: "localhost",
     username: "root",
-    password: "",
+    password: "root",
     database: "phone_catalog", // add database name
     syncDB:true,
     port:3306

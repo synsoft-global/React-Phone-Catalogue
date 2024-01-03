@@ -5,9 +5,11 @@ export const showToast = (
   message: string,
   key: string,
   variant: string,
-  closeSnackbar: any
+  closeSnackbar: any,
 ) => {
-  snackbar(message, { variant: variant, persist: true, preventDuplicate: true, key: key });
+  snackbar(message, {
+    variant, persist: true, preventDuplicate: true, key,
+  });
   setTimeout(() => {
     closeSnackbar(key);
   }, 4000);

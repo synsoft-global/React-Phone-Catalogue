@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
@@ -14,7 +18,7 @@ import {
   IconButton,
   MenuItem,
   FormControl,
-  Divider
+  Divider,
 } from '@material-ui/core';
 import Snackbar from '@material-ui/core/Snackbar';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
@@ -23,39 +27,40 @@ import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
   // KeyboardTimePicker,
-  KeyboardDatePicker
+  KeyboardDatePicker,
 } from '@material-ui/pickers';
 import CloseIcon from '@material-ui/icons/Close';
 import SendIcon from '@material-ui/icons/Send';
 import { useHistory, useLocation } from 'react-router-dom';
 import placeholder from '../../assets/place.png';
-import { getApiCall, UpdateApiCall, postApiCall, jsonParser } from '../../comman/services';
+import {
+  getApiCall, UpdateApiCall, postApiCall, jsonParser,
+} from '../../comman/services';
 import { BASE_URL } from '../../app-config';
+
 const queryString = require('query-string');
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-      margin: 24
-    },
-    formControl: {
-      margin: theme.spacing(1),
-      width: '100%',
-      marginTop: 16
-    },
-    button: {
-      margin: theme.spacing(3),
-      width: 140
-    },
-    profilePic: {
-      height: 220,
-      minWidth: 164
-    }
-  })
-);
+const useStyles = makeStyles((theme: Theme) => createStyles({
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    margin: 24,
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    width: '100%',
+    marginTop: 16,
+  },
+  button: {
+    margin: theme.spacing(3),
+    width: 140,
+  },
+  profilePic: {
+    height: 220,
+    minWidth: 164,
+  },
+}));
 export default function AddEditPhone() {
   const classes = useStyles();
   const [toast, setOpened] = React.useState(false);
@@ -132,7 +137,7 @@ export default function AddEditPhone() {
     main_camera_featureError: false,
     selfi_camera_videoError: false,
     selfi_camera_featureError: false,
-    selfi_camera_singleError: false
+    selfi_camera_singleError: false,
   });
   const history = useHistory();
   const location = useLocation();
@@ -154,24 +159,24 @@ export default function AddEditPhone() {
   const NetworkData = [
     {
       name: '2G bands',
-      values: 'GSM 850 / 900 / 1800 / 1900 CDMA 800 / 1900'
+      values: 'GSM 850 / 900 / 1800 / 1900 CDMA 800 / 1900',
     },
     {
       name: '3G bands',
-      values: 'HSDPA 850 / 900 / 1700(AWS) / 1900 / 2100 CDMA2000 1xEV-DO'
+      values: 'HSDPA 850 / 900 / 1700(AWS) / 1900 / 2100 CDMA2000 1xEV-DO',
     },
     {
       name: '4G bands',
-      values: '71 - A2379, A2461, A2462'
+      values: '71 - A2379, A2461, A2462',
     },
     {
       name: '5G bands',
-      values: '261 SA/NSA/Sub6/mmWave - A2379 SA/NSA/Sub6 - A2461, A2462'
+      values: '261 SA/NSA/Sub6/mmWave - A2379 SA/NSA/Sub6 - A2461, A2462',
     },
     {
       name: 'Speed',
-      values: 'HSPA 42.2/5.76 Mbps, LTE-A, EV-DO Rev.A 3.1 Mbps, 5G'
-    }
+      values: 'HSPA 42.2/5.76 Mbps, LTE-A, EV-DO Rev.A 3.1 Mbps, 5G',
+    },
   ];
 
   const handleChange = (prop) => (event) => {
@@ -201,54 +206,54 @@ export default function AddEditPhone() {
 
   const FromSubmit = (e) => {
     e.preventDefault();
-    //console.log("from submited value is here ",e);
-    const status = state.status + '&' + releaseDate;
-    const dimensions = state.diamention1 + '*' + state.diamention2 + '*' + state.diamention3;
+    // console.log("from submited value is here ",e);
+    const status = `${state.status}&${releaseDate}`;
+    const dimensions = `${state.diamention1}*${state.diamention2}*${state.diamention3}`;
     const postData = {
       name: state.name,
       networkTechnology: state.network,
       lanch: {
         announced: announcedDate,
-        status: status
+        status,
       },
       body: {
-        dimensions: dimensions,
+        dimensions,
         wight: state.weight,
         build: state.build,
-        sim: state.sim
+        sim: state.sim,
       },
       imageFileName: {
-        image: ''
+        image: '',
       },
       display: {
         type: state.dType,
         size: state.dSize,
         resolution: state.dResolution,
-        protection: state.dProtection
+        protection: state.dProtection,
       },
       platefrom: {
         os: state.os,
         chipset: state.chipSet,
         cpu: state.cpu,
-        gpu: state.gpu
+        gpu: state.gpu,
       },
       memory: {
         cardslote: state.cardSlot,
-        internal: state.internalMemory
+        internal: state.internalMemory,
       },
       mainCamera: {
         quad: state.main_camera_triple,
         features: state.main_camera_feature,
-        video: state.main_camera_video
+        video: state.main_camera_video,
       },
       selfieCamera: {
         dual: state.selfi_camera_single,
         features: state.selfi_camera_feature,
-        video: state.selfi_camera_video
+        video: state.selfi_camera_video,
       },
       sound: {
         loudspeaker: state.loaudSpeaker,
-        jack: state.soundJack
+        jack: state.soundJack,
       },
       comms: {
         wlan: state.wlan,
@@ -256,22 +261,22 @@ export default function AddEditPhone() {
         gps: state.gps,
         nfc: state.nfc,
         radio: state.radio,
-        usb: state.usb
+        usb: state.usb,
       },
       featurs: {
-        sensors: state.sensors
+        sensors: state.sensors,
       },
       bettery: {
         type: state.batteryType,
         charging: state.batterCharging,
         standby: state.stand_by,
-        musicPlay: state.music_play
+        musicPlay: state.music_play,
       },
       misc: {
         color: state.color,
         model: state.model,
-        sar_eu: state.head + '&' + state.body,
-        price: state.price
+        sar_eu: `${state.head}&${state.body}`,
+        price: state.price,
       },
       tests: {
         performance: state.performance,
@@ -279,20 +284,20 @@ export default function AddEditPhone() {
         camera: state.camera,
         loudspeaker: state.loaud_speker,
         audioQuelity: state.audio_quelity,
-        batteryLife: state.battery_life
-      }
+        batteryLife: state.battery_life,
+      },
     };
 
     //  console.log("post this data on server",postData);
     if (state.header === 'Add') {
       if (!imageData) {
         const methodName = 'phones/Create';
-        //var parameters = 'id='+state.userId;
+        // var parameters = 'id='+state.userId;
         postApiCall(methodName, postData)
           .then((response: any) => {
             SettoastMessage('Phone Detail added sucessfully!');
             setOpened(true);
-            setTimeout(function () {
+            setTimeout(() => {
               homeScreen();
             }, 2000);
           })
@@ -310,13 +315,13 @@ export default function AddEditPhone() {
             //  console.log("server responce data is here ",response);
             if (response.message === 'image uploded successfully') {
               postData.imageFileName.image = response.file.filename;
-              const methodName = 'phones/Create';
-              postApiCall(methodName, postData)
-                .then((response: any) => {
+              const methodNameApi = 'phones/Create';
+              postApiCall(methodNameApi, postData)
+                .then((_response: any) => {
                   // console.log("update user data is here ",response);
                   SettoastMessage('Phone Detail added sucessfully!');
                   setOpened(true);
-                  setTimeout(function () {
+                  setTimeout(() => {
                     homeScreen();
                   }, 2000);
                 })
@@ -335,63 +340,61 @@ export default function AddEditPhone() {
             setOpened(true);
           });
       }
+    } else if (!imageData) {
+      postData.imageFileName.image = state.imageName;
+      const methodName = 'phones/update';
+      const parameters = `id=${state.id}`;
+      UpdateApiCall(methodName, parameters, postData)
+        .then((response: any) => {
+          SettoastMessage('Phone detail updated sucessfully!');
+          setOpened(true);
+          GetPhoneDetailById(query.phoneId);
+          setTimeout(() => {
+            homeScreen();
+          }, 2000);
+        })
+        .catch((error: any) => {
+          console.log('update user data is here 345353534', error);
+          // state.toastMessage = error.message;
+          SettoastMessage(error.message);
+          setOpened(true);
+        });
     } else {
-      if (!imageData) {
-        postData.imageFileName.image = state.imageName;
-        const methodName = 'phones/update';
-        const parameters = 'id=' + state.id;
-        UpdateApiCall(methodName, parameters, postData)
-          .then((response: any) => {
-            SettoastMessage('Phone detail updated sucessfully!');
+      const formData = new FormData();
+      formData.append('image', imageData, imageData.name);
+      // formData.append("image", state.file);
+      const methodName = 'phones/upload';
+      postApiCall(methodName, formData)
+        .then((response: any) => {
+          // console.log("server responce data is here &&&&&&&&& ",response);
+          if (response.message === 'image uploded successfully') {
+            postData.imageFileName.image = response.file.filename;
+            const methodNameApi = 'phones/update';
+            const parameters = `id=${state.id}`;
+            UpdateApiCall(methodNameApi, parameters, postData)
+              .then((_response: any) => {
+                console.log('update user data is here ', response);
+                GetPhoneDetailById(query.phoneId);
+                SettoastMessage('Phone detail updated sucessfully!');
+                setOpened(true);
+                setTimeout(() => {
+                  homeScreen();
+                }, 2000);
+              })
+              .catch((error: any) => {
+                SettoastMessage(error.message);
+                setOpened(true);
+              });
+          } else {
+            SettoastMessage(response.message);
             setOpened(true);
-            GetPhoneDetailById(query.phoneId);
-            setTimeout(function () {
-              homeScreen();
-            }, 2000);
-          })
-          .catch((error: any) => {
-            console.log('update user data is here 345353534', error);
-            // state.toastMessage = error.message;
-            SettoastMessage(error.message);
-            setOpened(true);
-          });
-      } else {
-        const formData = new FormData();
-        formData.append('image', imageData, imageData.name);
-        // formData.append("image", state.file);
-        const methodName = 'phones/upload';
-        postApiCall(methodName, formData)
-          .then((response: any) => {
-            // console.log("server responce data is here &&&&&&&&& ",response);
-            if (response.message === 'image uploded successfully') {
-              postData.imageFileName.image = response.file.filename;
-              const methodName = 'phones/update';
-              const parameters = 'id=' + state.id;
-              UpdateApiCall(methodName, parameters, postData)
-                .then((response: any) => {
-                  console.log('update user data is here ', response);
-                  GetPhoneDetailById(query.phoneId);
-                  SettoastMessage('Phone detail updated sucessfully!');
-                  setOpened(true);
-                  setTimeout(function () {
-                    homeScreen();
-                  }, 2000);
-                })
-                .catch((error: any) => {
-                  SettoastMessage(error.message);
-                  setOpened(true);
-                });
-            } else {
-              SettoastMessage(response.message);
-              setOpened(true);
-            }
-          })
-          .catch((error: any) => {
-            console.log('server responce data error is here ', error);
-            SettoastMessage(error.message);
-            setOpened(true);
-          });
-      }
+          }
+        })
+        .catch((error: any) => {
+          console.log('server responce data error is here ', error);
+          SettoastMessage(error.message);
+          setOpened(true);
+        });
     }
   };
 
@@ -446,7 +449,7 @@ export default function AddEditPhone() {
       camera: '',
       loaud_speker: '',
       audio_quelity: '',
-      battery_life: ''
+      battery_life: '',
     });
   };
 
@@ -614,7 +617,7 @@ export default function AddEditPhone() {
   const GetPhoneDetailById = (id) => {
     console.log('get phone state here ', id);
     const methodName = 'phones/getPhoneDetails';
-    const parameters = 'id=' + id;
+    const parameters = `id=${id}`;
     getApiCall(methodName, parameters)
       .then((response: any) => {
         //  console.log('user data for edit profile is here ',response);
@@ -630,7 +633,7 @@ export default function AddEditPhone() {
             id: query.phoneId,
             header: 'Edit',
             imageName: jsonParser(temp.imageFileName).image,
-            file: BASE_URL + '/uploads/' + jsonParser(temp.imageFileName).image,
+            file: `${BASE_URL}/uploads/${jsonParser(temp.imageFileName).image}`,
             network: temp.networkTechnology,
             name: temp.name,
             status: res[0],
@@ -679,7 +682,7 @@ export default function AddEditPhone() {
             camera: jsonParser(temp.tests).camera,
             loaud_speker: jsonParser(temp.tests).loudspeaker,
             audio_quelity: jsonParser(temp.tests).audioQuelity,
-            battery_life: jsonParser(temp.tests).batteryLife
+            battery_life: jsonParser(temp.tests).batteryLife,
           });
         } else {
           //    setValues({ ...state, ['toastMessage']: response.message });
@@ -708,8 +711,12 @@ export default function AddEditPhone() {
           <p className="textHeader">
             <IconButton aria-label="delete" onClick={() => Back()}>
               <ArrowBackIcon fontSize="large" />
-            </IconButton>{' '}
-            {state.header} Phone Catalog list{' '}
+            </IconButton>
+            {' '}
+            {state.header}
+            {' '}
+            Phone Catalog list
+            {' '}
           </p>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -727,7 +734,6 @@ export default function AddEditPhone() {
                         onChange={uploadsImage('image')}
                       />
                       <img src={state.file} className={classes.profilePic} alt="uploaded" />
-                      {/* <FormHelperText className="errorText" > {imageData ? '' : 'phone image is required !'}</FormHelperText> */}
                     </label>
                   </div>
                 </Grid>
@@ -759,18 +765,28 @@ export default function AddEditPhone() {
                       <FormControl
                         className={classes.formControl}
                         required
-                        error={state.neworkError}>
+                        error={state.neworkError}
+                      >
                         <InputLabel id="network-label1">Technology</InputLabel>
                         <Select
                           labelId="network-label2"
                           id="network-helper"
                           value={state.network}
                           onBlur={onKeyUp('network')}
-                          onChange={handleChange('network')}>
+                          onChange={handleChange('network')}
+                        >
                           {NetworkData.map((item) => (
                             <MenuItem key="{item}" value={item.name}>
                               {' '}
-                              <span className="BoldText"> {item.name} - </span> {item.values}
+                              <span className="BoldText">
+                                {' '}
+                                {item.name}
+                                {' '}
+                                -
+                                {' '}
+                              </span>
+                              {' '}
+                              {item.values}
                             </MenuItem>
                           ))}
                         </Select>
@@ -800,7 +816,7 @@ export default function AddEditPhone() {
                         value={announcedDate}
                         onChange={handleDateChange1}
                         KeyboardButtonProps={{
-                          'aria-label': 'change date'
+                          'aria-label': 'change date',
                         }}
                         onBlur={onKeyUp('announcedDate')}
                         required
@@ -819,7 +835,8 @@ export default function AddEditPhone() {
                       id="status"
                       value={state.status}
                       onChange={handleChange('status')}
-                      onBlur={onKeyUp('status')}>
+                      onBlur={onKeyUp('status')}
+                    >
                       <MenuItem value="Coming soon">Coming soon </MenuItem>
                       <MenuItem value="Available"> Available </MenuItem>
                       <MenuItem value="Sold out"> Sold out </MenuItem>
@@ -843,7 +860,7 @@ export default function AddEditPhone() {
                         value={releaseDate}
                         onChange={handleDateChange2}
                         KeyboardButtonProps={{
-                          'aria-label': 'change date'
+                          'aria-label': 'change date',
                         }}
                         onBlur={onKeyUp('releaseDate')}
                         required
@@ -1066,11 +1083,12 @@ export default function AddEditPhone() {
                       labelId="cardSlot-label"
                       id="cardSlot"
                       value={state.cardSlot}
-                      onChange={handleChange('cardSlot')}>
+                      onChange={handleChange('cardSlot')}
+                    >
                       <MenuItem value="Yes"> Yes </MenuItem>
                       <MenuItem value="No">No </MenuItem>
                     </Select>
-                    {/*<FormHelperText>Some important helper text</FormHelperText> */}
+                    {/* <FormHelperText>Some important helper text</FormHelperText> */}
                   </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={12} md={8} lg={8}>
@@ -1221,11 +1239,12 @@ export default function AddEditPhone() {
                       labelId="soundJack-label"
                       id="soundJack"
                       value={state.soundJack}
-                      onChange={handleChange('soundJack')}>
+                      onChange={handleChange('soundJack')}
+                    >
                       <MenuItem value="Yes"> Yes </MenuItem>
                       <MenuItem value="No">No </MenuItem>
                     </Select>
-                    {/*NetworkData <FormHelperText>Some important helper text</FormHelperText> */}
+                    {/* NetworkData <FormHelperText>Some important helper text</FormHelperText> */}
                   </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={12} md={8} lg={8}>
@@ -1281,11 +1300,12 @@ export default function AddEditPhone() {
                       labelId="nfc-label"
                       id="nfc"
                       value={state.nfc}
-                      onChange={handleChange('nfc')}>
+                      onChange={handleChange('nfc')}
+                    >
                       <MenuItem value="Yes"> Yes </MenuItem>
                       <MenuItem value="No">No </MenuItem>
                     </Select>
-                    {/*<FormHelperText>Some important helper text</FormHelperText> */}
+                    {/* <FormHelperText>Some important helper text</FormHelperText> */}
                   </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={12} md={4} lg={4}>
@@ -1305,11 +1325,12 @@ export default function AddEditPhone() {
                       labelId="radio-label"
                       id="radio"
                       value={state.radio}
-                      onChange={handleChange('radio')}>
+                      onChange={handleChange('radio')}
+                    >
                       <MenuItem value="Yes"> Yes </MenuItem>
                       <MenuItem value="No">No </MenuItem>
                     </Select>
-                    {/*<FormHelperText>Some important helper text</FormHelperText> */}
+                    {/* <FormHelperText>Some important helper text</FormHelperText> */}
                   </FormControl>
                 </Grid>
               </Grid>
@@ -1519,7 +1540,8 @@ export default function AddEditPhone() {
                     color="default"
                     className={classes.button}
                     startIcon={<CloseIcon />}
-                    onClick={() => FromClear()}>
+                    onClick={() => FromClear()}
+                  >
                     Clear
                   </Button>
                   <Button
@@ -1527,7 +1549,8 @@ export default function AddEditPhone() {
                     variant="contained"
                     color="primary"
                     className={classes.button}
-                    endIcon={<SendIcon />}>
+                    endIcon={<SendIcon />}
+                  >
                     Send
                   </Button>
                 </Grid>
@@ -1539,19 +1562,17 @@ export default function AddEditPhone() {
       <Snackbar
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'center'
+          horizontal: 'center',
         }}
         open={toast}
         autoHideDuration={3000}
         onClose={handleClosed}
         message={toastMessage}
-        action={
-          <React.Fragment>
-            <IconButton size="small" aria-label="close" color="primary" onClick={handleClosed}>
-              <CloseIcon fontSize="small" />
-            </IconButton>
-          </React.Fragment>
-        }
+        action={(
+          <IconButton size="small" aria-label="close" color="primary" onClick={handleClosed}>
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        )}
       />
       {/* {Inliation()} */}
     </div>

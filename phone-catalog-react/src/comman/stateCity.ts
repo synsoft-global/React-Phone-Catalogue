@@ -84,7 +84,7 @@ export const stateCity = [
       'Visakhapatnam',
       'Vizianagaram',
       'Yemmiganur',
-      'Yerraguntla'
+      'Yerraguntla',
     ],
     'Arunachal Pradesh': ['Naharlagun', 'Pasighat'],
     Assam: [
@@ -112,7 +112,7 @@ export const stateCity = [
       'Silapathar',
       'Silchar',
       'Tezpur',
-      'Tinsukia'
+      'Tinsukia',
     ],
     Bihar: [
       'Araria',
@@ -184,7 +184,7 @@ export const stateCity = [
       'Sugauli',
       'Sultanganj',
       'Supaul',
-      'Warisaliganj'
+      'Warisaliganj',
     ],
     Chandigarh: ['Chandigarh*'],
     Chhattisgarh: [
@@ -206,7 +206,7 @@ export const stateCity = [
       'Raipur*',
       'Rajnandgaon',
       'Sakti',
-      'Tilda Newra'
+      'Tilda Newra',
     ],
     'Dadra and Nagar Haveli': ['Silvassa*'],
     Delhi: ['Delhi', 'New Delhi*'],
@@ -283,7 +283,7 @@ export const stateCity = [
       'Visnagar',
       'Vyara',
       'Wadhwan',
-      'Wankaner'
+      'Wankaner',
     ],
     Haryana: [
       'Bahadurgarh',
@@ -322,7 +322,7 @@ export const stateCity = [
       'Taraori',
       'Thanesar',
       'Tohana',
-      'Yamunanagar'
+      'Yamunanagar',
     ],
     'Himachal Pradesh': ['Mandi', 'Nahan', 'Palampur', 'Shimla*', 'Solan', 'Sundarnagar'],
     'Jammu and Kashmir': [
@@ -334,7 +334,7 @@ export const stateCity = [
       'Rajauri',
       'Sopore',
       'Srinagar*',
-      'Udhampur'
+      'Udhampur',
     ],
     Jharkhand: [
       'Adityapur',
@@ -363,7 +363,7 @@ export const stateCity = [
       'Sahibganj',
       'Saunda',
       'Simdega',
-      'Tenu dam-cum-Kathhara'
+      'Tenu dam-cum-Kathhara',
     ],
     Karnataka: [
       'Adyar',
@@ -444,7 +444,7 @@ export const stateCity = [
       'Udupi',
       'Vijayapura',
       'Wadi',
-      'Yadgir'
+      'Yadgir',
     ],
     Karnatka: ['Mysore'],
     Kerala: [
@@ -498,7 +498,7 @@ export const stateCity = [
       'Tirur',
       'Vaikom',
       'Varkala',
-      'Vatakara'
+      'Vatakara',
     ],
     'Madhya Pradesh': [
       'Alirajpur',
@@ -582,7 +582,7 @@ export const stateCity = [
       'Umaria',
       'Vidisha',
       'Vijaypur',
-      'Wara Seoni'
+      'Wara Seoni',
     ],
     Maharashtra: [
       '[[]]',
@@ -706,7 +706,7 @@ export const stateCity = [
       'Washim',
       'Yavatmal',
       'Yawal',
-      'Yevla'
+      'Yevla',
     ],
     Manipur: ['Imphal*', 'Lilong', 'Mayang Imphal', 'Thoubal'],
     Meghalaya: ['Nongstoin', 'Shillong*', 'Tura'],
@@ -746,7 +746,7 @@ export const stateCity = [
       'Sundargarh',
       'Talcher',
       'Tarbha',
-      'Titlagarh'
+      'Titlagarh',
     ],
     Puducherry: ['Karaikal', 'Mahe', 'Pondicherry*', 'Yanam'],
     Punjab: [
@@ -803,7 +803,7 @@ export const stateCity = [
       'Tarn Taran',
       'Urmar Tanda',
       'Zira',
-      'Zirakpur'
+      'Zirakpur',
     ],
     Rajasthan: [
       'Ajmer',
@@ -880,7 +880,7 @@ export const stateCity = [
       'Tonk',
       'Udaipur',
       'Udaipurwati',
-      'Vijainagar, Ajmer'
+      'Vijainagar, Ajmer',
     ],
     'Tamil Nadu': [
       'Arakkonam',
@@ -994,7 +994,7 @@ export const stateCity = [
       'Viluppuram',
       'Virudhachalam',
       'Virudhunagar',
-      'Viswanatham'
+      'Viswanatham',
     ],
     Telangana: [
       'Adilabad',
@@ -1036,7 +1036,7 @@ export const stateCity = [
       'Vikarabad',
       'Wanaparthy',
       'Warangal',
-      'Yellandu'
+      'Yellandu',
     ],
     Tripura: [
       'Agartala*',
@@ -1045,7 +1045,7 @@ export const stateCity = [
       'Kailasahar',
       'Khowai',
       'Pratapgarh',
-      'Udaipur'
+      'Udaipur',
     ],
     'Uttar Pradesh': [
       'Achhnera',
@@ -1165,7 +1165,7 @@ export const stateCity = [
       'Vrindavan',
       'Warhapur',
       'Zaidpur',
-      'Zamania'
+      'Zamania',
     ],
     Uttarakhand: [
       'Bageshwar',
@@ -1185,7 +1185,7 @@ export const stateCity = [
       'Rudrapur',
       'Sitarganj',
       'Srinagar',
-      'Tehri'
+      'Tehri',
     ],
     'West Bengal': [
       'Adra',
@@ -1231,7 +1231,7 @@ export const stateCity = [
       'Suri',
       'Taki',
       'Tamluk',
-      'Tarakeswar'
-    ]
-  }
+      'Tarakeswar',
+    ],
+  },
 ];

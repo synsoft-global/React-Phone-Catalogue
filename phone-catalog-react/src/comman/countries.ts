@@ -241,5 +241,5 @@ export const Country = [
   { country: 'Western Sahara', value: '+212', code: 'EH' },
   { country: 'Yemen', value: '+967', code: 'YE' },
   { country: 'Zambia', value: '+260', code: 'ZM' },
-  { country: 'Zimbabwe', value: '+263', code: 'ZW' }
+  { country: 'Zimbabwe', value: '+263', code: 'ZW' },
 ];

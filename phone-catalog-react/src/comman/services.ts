@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /*
@@ -15,7 +16,7 @@ import { BASE_URL } from '../app-config';
 const requestObj = axios.create({
   baseURL: `${BASE_URL}/`,
   responseType: 'json',
-  headers: { 'content-Type': 'application/json' }
+  headers: { 'content-Type': 'application/json' },
 });
 
 /*
@@ -23,9 +24,7 @@ const requestObj = axios.create({
  */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function getApiCall(apiName: string, parameters: string | null) {
-  return requestObj.get(`${apiName}?${parameters}`).then((res) => {
-    return res.data;
-  });
+  return requestObj.get(`${apiName}?${parameters}`).then((res) => res.data);
 }
 
 /*
@@ -33,9 +32,7 @@ export function getApiCall(apiName: string, parameters: string | null) {
  */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function postApiCall(apiName: string, parameters: any) {
-  return requestObj.post(`${apiName}`, parameters).then((res) => {
-    return res.data;
-  });
+  return requestObj.post(`${apiName}`, parameters).then((res) => res.data);
 }
 
 /*
@@ -43,9 +40,7 @@ export function postApiCall(apiName: string, parameters: any) {
  */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function UpdateApiCall(apiName: string, parameters: any, userdata: any) {
-  return requestObj.put(`${apiName}?${parameters}`, userdata).then((res) => {
-    return res.data;
-  });
+  return requestObj.put(`${apiName}?${parameters}`, userdata).then((res) => res.data);
 }
 
 /*
@@ -53,9 +48,7 @@ export function UpdateApiCall(apiName: string, parameters: any, userdata: any) {
  */
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function DeleteApiCall(apiName: string, parameters: string) {
-  return requestObj.delete(`${apiName}?${parameters}`).then((res) => {
-    return res.data;
-  });
+  return requestObj.delete(`${apiName}?${parameters}`).then((res) => res.data);
 }
 
 /*

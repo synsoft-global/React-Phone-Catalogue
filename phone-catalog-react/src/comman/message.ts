@@ -10,7 +10,7 @@ export const loginmsg: any = {
   loginSuccess: 'User Login Sucessfully',
   loginFailed: 'Please enter email and password',
   commonMessage: 'Please enter all mendatory fields!',
-  emailError: 'Email must be in between 6 to 100 charector'
+  emailError: 'Email must be in between 6 to 100 charector',
 };
 
 export const forgotpassword: any = {
@@ -23,7 +23,7 @@ export const forgotpassword: any = {
   validEmail: 'Please enter a valid Email Id.',
   notmatchpassword: 'New Password and Confirm New Password should be same',
   passwordUpdateSucess: 'Your Password has been updated.!',
-  passwordUpdateFailed: 'Failed to update password sucessfully!'
+  passwordUpdateFailed: 'Failed to update password sucessfully!',
 };
 
 export const registered: any = {
@@ -44,7 +44,7 @@ export const registered: any = {
   registeredFailed: 'Some thing went wrong try again!',
   usernameBlank: 'Please enter username.',
   usernamelength: 'Username must be in between 6 t0 50 characters.',
-  usernameinvalid: 'Username only accept alpha numeric, underscore, dot. '
+  usernameinvalid: 'Username only accept alpha numeric, underscore, dot. ',
 };
 
 export const editProfile: any = {
@@ -69,5 +69,5 @@ export const editProfile: any = {
   profileUpdateFailed: 'Some thing went wrong unable to update your profile!',
   genderError: 'Please select your gender.',
   indpincodeError: 'Pincode must be in 6 digits.',
-  oherpincodeError: 'Pincode must be in 5 digits.'
+  oherpincodeError: 'Pincode must be in 5 digits.',
 };

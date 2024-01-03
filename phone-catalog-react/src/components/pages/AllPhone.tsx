@@ -1,5 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable linebreak-style */
 /* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable linebreak-style */
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable max-len */
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useEffect } from 'react';
 import '../../App.css';
 import '../css/allPhone.css';
@@ -17,7 +24,7 @@ import {
   Button,
   Grid,
   Typography,
-  Paper
+  Paper,
 } from '@material-ui/core';
 import Snackbar from '@material-ui/core/Snackbar';
 import CloseIcon from '@material-ui/icons/Close';
@@ -32,26 +39,25 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import { useHistory } from 'react-router-dom';
 import { getApiCall, DeleteApiCall, jsonParser } from '../../comman/services';
 import { BASE_URL } from '../../app-config';
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    container: {
-      // maxHeight: 485,
-    },
-    tableButton: {
-      height: 20,
-      width: 20
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-      margin: 24
-    },
-    ButtonMargin: {
-      margin: 2
-    }
-  })
-);
+
+const useStyles = makeStyles((theme: Theme) => createStyles({
+  container: {
+    // maxHeight: 485,
+  },
+  tableButton: {
+    height: 20,
+    width: 20,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    margin: 24,
+  },
+  ButtonMargin: {
+    margin: 2,
+  },
+}));
 // const Order: any = '';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -76,7 +82,7 @@ export default function AllPhone() {
     phoneId: '',
     toastMessage: '',
     searchValue: '',
-    checkOrder: ''
+    checkOrder: '',
   });
   const handleClose = () => {
     setAnchorEl(null);
@@ -96,7 +102,7 @@ export default function AllPhone() {
   const DeletePhoneDetail = () => {
     if (config.deletePhone) {
       const methodName = 'phones/delete';
-      const parameters: string = 'id=' + config.phoneId;
+      const parameters = `id=${config.phoneId}`;
       DeleteApiCall(methodName, parameters)
         .then((response) => {
           config.toastMessage = response.message;
@@ -152,19 +158,9 @@ export default function AllPhone() {
    * this function is used for get user data from server  data.sortBy && data.sortAs
    */
   const GetUserData = () => {
-    const orderby = orderBy ? orderBy : '';
+    const orderby = orderBy || '';
     const methodName = 'phones/getListPhone';
-    const parameters: string =
-      'page=' +
-      config.itemsPerPage +
-      '&pageSize=' +
-      config.rowsPerPage +
-      '&search=' +
-      config.searchValue +
-      '&sortBy=' +
-      orderby +
-      '&sortAs=' +
-      config.checkOrder;
+    const parameters = `page=${config.itemsPerPage}&pageSize=${config.rowsPerPage}&search=${config.searchValue}&sortBy=${orderby}&sortAs=${config.checkOrder}`;
 
     getApiCall(methodName, parameters)
       .then((response: any) => {
@@ -188,48 +184,48 @@ export default function AllPhone() {
 
   const phoneDetail = (id) => {
     // eslint-disable-next-line prefer-const
-    let temp = '/phone-detail?phoneId=' + id;
+    let temp = `/phone-detail?phoneId=${id}`;
     history.push(temp);
   };
 
   const editPhone = (id) => {
-    const temp = '/addPhone?phoneId=' + id;
+    const temp = `/addPhone?phoneId=${id}`;
     history.push(temp);
   };
 
   /*
    * this function is used for show edit and delete button phone-detail
    */
-  const rander = (phoneId) => {
-    // console.log("user info data is here ",phoneId);
-    return (
-      <Typography>
-        <Button
-          variant="outlined"
-          className={classes.ButtonMargin}
-          color="primary"
-          onClick={() => DeletePhone(phoneId)}>
-          <DeleteIcon />
-        </Button>
-        <Button
-          variant="outlined"
-          className={classes.ButtonMargin}
-          color="primary"
-          onClick={() => editPhone(phoneId)}
-          aria-label="edit">
-          <EditIcon />
-        </Button>
-        <Button
-          className={classes.ButtonMargin}
-          onClick={() => phoneDetail(phoneId)}
-          variant="outlined"
-          color="primary">
-          <VisibilityIcon />
-        </Button>
-      </Typography>
-    );
-  };
-
+  // eslint-disable-next-line implicit-arrow-linebreak
+  const rander = (phoneId) => (
+    <Typography>
+      <Button
+        variant="outlined"
+        className={classes.ButtonMargin}
+        color="primary"
+        onClick={() => DeletePhone(phoneId)}
+      >
+        <DeleteIcon />
+      </Button>
+      <Button
+        variant="outlined"
+        className={classes.ButtonMargin}
+        color="primary"
+        onClick={() => editPhone(phoneId)}
+        aria-label="edit"
+      >
+        <EditIcon />
+      </Button>
+      <Button
+        className={classes.ButtonMargin}
+        onClick={() => phoneDetail(phoneId)}
+        variant="outlined"
+        color="primary"
+      >
+        <VisibilityIcon />
+      </Button>
+    </Typography>
+  );
   const handleClosed = () => {
     setOpened(false);
   };
@@ -247,7 +243,8 @@ export default function AllPhone() {
           <p className="textHeader">
             <Button variant="outlined" onClick={() => AddPhone()}>
               ADD NEW
-            </Button>{' '}
+            </Button>
+            {' '}
           </p>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -266,6 +263,7 @@ export default function AllPhone() {
                 </TableHead>
                 <TableBody>
                   {rows.map((value, index) => (
+                    // eslint-disable-next-line react/no-array-index-key
                     <TableRow key={index}>
                       <TableCell component="th" scope="row">
                         {index + 1}
@@ -273,40 +271,63 @@ export default function AllPhone() {
                       <TableCell>
                         <img
                           className="imageWidth"
-                          src={BASE_URL + '/uploads/' + jsonParser(value.imageFileName).image}
+                          src={`${BASE_URL}/uploads/${jsonParser(value.imageFileName).image}`}
                           alt={value.name}
                         />
                       </TableCell>
                       <TableCell>
-                        <p className="textP"> {value.name} </p>
-                        <p className="textP">{jsonParser(value.platefrom).os} </p>
-                        <p className="textP"> {jsonParser(value.platefrom).chipset} </p>
-                        <p className="textP">{jsonParser(value.platefrom).cpu} </p>
-                      </TableCell>
-                      <TableCell>
                         <p className="textP">
                           {' '}
-                          <span className="sub-title"> Ram : </span>{' '}
-                          {jsonParser(value.memory).internal}{' '}
+                          {value.name}
+                          {' '}
+                        </p>
+                        <p className="textP">
+                          {jsonParser(value.platefrom).os}
+                          {' '}
                         </p>
                         <p className="textP">
                           {' '}
-                          <span className="sub-title">Main camera: </span>{' '}
-                          {jsonParser(value.mainCamera).quad}{' '}
+                          {jsonParser(value.platefrom).chipset}
+                          {' '}
                         </p>
                         <p className="textP">
+                          {jsonParser(value.platefrom).cpu}
                           {' '}
-                          <span className="sub-title">Front camera: </span>{' '}
-                          {jsonParser(value.selfieCamera).dual}{' '}
-                        </p>
-                        <p className="textP">
-                          {' '}
-                          <span className="sub-title">Batery Life : </span>{' '}
-                          {jsonParser(value.tests).batteryLife}{' '}
                         </p>
                       </TableCell>
                       <TableCell>
-                        <Moment>{jsonParser(value.lanch).announced}</Moment>{' '}
+                        <p className="textP">
+                          {' '}
+                          <span className="sub-title"> Ram : </span>
+                          {' '}
+                          {jsonParser(value.memory).internal}
+                          {' '}
+                        </p>
+                        <p className="textP">
+                          {' '}
+                          <span className="sub-title">Main camera: </span>
+                          {' '}
+                          {jsonParser(value.mainCamera).quad}
+                          {' '}
+                        </p>
+                        <p className="textP">
+                          {' '}
+                          <span className="sub-title">Front camera: </span>
+                          {' '}
+                          {jsonParser(value.selfieCamera).dual}
+                          {' '}
+                        </p>
+                        <p className="textP">
+                          {' '}
+                          <span className="sub-title">Batery Life : </span>
+                          {' '}
+                          {jsonParser(value.tests).batteryLife}
+                          {' '}
+                        </p>
+                      </TableCell>
+                      <TableCell>
+                        <Moment>{jsonParser(value.lanch).announced}</Moment>
+                        {' '}
                       </TableCell>
                       <TableCell>{rander(value.id)}</TableCell>
                     </TableRow>
@@ -343,19 +364,17 @@ export default function AllPhone() {
       <Snackbar
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'center'
+          horizontal: 'center',
         }}
         open={toast}
         autoHideDuration={2000}
         onClose={handleClosed}
         message={config.toastMessage}
-        action={
-          <React.Fragment>
-            <IconButton size="small" aria-label="close" color="primary" onClick={handleClosed}>
-              <CloseIcon fontSize="small" />
-            </IconButton>
-          </React.Fragment>
-        }
+        action={(
+          <IconButton size="small" aria-label="close" color="primary" onClick={handleClosed}>
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        )}
       />
     </div>
   );

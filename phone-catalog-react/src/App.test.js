@@ -1,8 +1,9 @@
 import React from 'react';
 import Enzyme, { mount } from 'enzyme';
 import { BrowserRouter } from 'react-router-dom';
-import AddEditPhone from './components/pages/addEditPhone';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+import AddEditPhone from './components/pages/addEditPhone';
+
 Enzyme.configure({ adapter: new Adapter() });
 
 /**
@@ -245,5 +246,9 @@ describe('Test cases for unit testing of Add phone catalog screen', () => {
 });
 
 function shallowWithBrowserRouter(component) {
-  return mount(<BrowserRouter> {component} </BrowserRouter>);
+  return mount(<BrowserRouter>
+    {' '}
+    {component}
+    {' '}
+               </BrowserRouter>);
 }

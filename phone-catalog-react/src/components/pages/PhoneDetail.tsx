@@ -1,17 +1,20 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { useEffect } from 'react';
-import { Grid, Typography, Button, Paper, IconButton, Divider } from '@material-ui/core';
+import {
+  Grid, Typography, Button, Paper, IconButton, Divider,
+} from '@material-ui/core';
 import { useHistory, useLocation } from 'react-router-dom';
-import { getApiCall, jsonParser, DeleteApiCall } from '../../comman/services';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import '../css/allPhone.css';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import EditIcon from '@material-ui/icons/Edit';
-import { BASE_URL } from '../../app-config';
 import Snackbar from '@material-ui/core/Snackbar';
 import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
@@ -21,19 +24,20 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Moment from 'react-moment';
+import { BASE_URL } from '../../app-config';
+import { getApiCall, jsonParser, DeleteApiCall } from '../../comman/services';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const queryString = require('query-string');
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    paper: {
-      padding: theme.spacing(2),
-      color: theme.palette.text.secondary
-    },
-    title: {
-      flexGrow: 1
-    }
-  })
-);
+
+const useStyles = makeStyles((theme: Theme) => createStyles({
+  paper: {
+    padding: theme.spacing(2),
+    color: theme.palette.text.secondary,
+  },
+  title: {
+    flexGrow: 1,
+  },
+}));
 export default function PhoneDetailComponent() {
   const classes = useStyles();
   const [state, setValues] = React.useState<any>({
@@ -43,46 +47,46 @@ export default function PhoneDetailComponent() {
       networkTechnology: '',
       lanch: {
         announced: '',
-        status: ''
+        status: '',
       },
       body: {
         dimensions: '',
         wight: '',
         build: '',
-        sim: ''
+        sim: '',
       },
       imageFileName: {
-        image: []
+        image: [],
       },
       display: {
         type: '',
         size: '',
         resolution: '',
-        protection: ''
+        protection: '',
       },
       platefrom: {
         os: '',
         chipset: '',
         cpu: '',
-        gpu: ''
+        gpu: '',
       },
       memory: {
         cardslote: '',
-        internal: ''
+        internal: '',
       },
       mainCamera: {
         quad: '',
         features: '',
-        video: ''
+        video: '',
       },
       selfieCamera: {
         dual: '',
         features: '',
-        video: ''
+        video: '',
       },
       sound: {
         loudspeaker: '',
-        jack: ''
+        jack: '',
       },
       comms: {
         wlan: '',
@@ -90,37 +94,37 @@ export default function PhoneDetailComponent() {
         gps: '',
         nfc: '',
         radio: '',
-        usb: ''
+        usb: '',
       },
       featurs: {
-        sensors: ''
+        sensors: '',
       },
       bettery: {
         type: '',
         charging: '',
         standby: '',
-        musicPlay: ''
+        musicPlay: '',
       },
       misc: {
         color: '',
         model: '',
         sar_eu: '',
-        price: ''
+        price: '',
       },
       tests: {
         performance: '',
         display: '',
         camra: '',
         loudspeaker: '',
-        batteryLife: ''
-      }
+        batteryLife: '',
+      },
     },
     name: '',
     image: '',
     status: 'Available',
     releaseDate: new Date(),
     deletePhone: false,
-    toastMessage: ''
+    toastMessage: '',
   });
   const location = useLocation();
   const history = useHistory();
@@ -142,7 +146,7 @@ export default function PhoneDetailComponent() {
   const GetPhoneDetailById = (id) => {
     // console.log("config data value is final value submit here ",id)
     const methodName = 'phones/getPhoneDetails';
-    const parameters = 'id=' + id;
+    const parameters = `id=${id}`;
     getApiCall(methodName, parameters)
       .then((response: any) => {
         //  console.log('user data for edit profile is here ',response);
@@ -154,7 +158,7 @@ export default function PhoneDetailComponent() {
             name: response.phone_info[0].name,
             image: jsonParser(response.phone_info[0].imageFileName).image,
             status: res[0],
-            releaseDate: res[1]
+            releaseDate: res[1],
           });
         } else {
           //    setValues({ ...state, ['toastMessage']: response.message });
@@ -173,7 +177,7 @@ export default function PhoneDetailComponent() {
   };
 
   const editPhone = () => {
-    const temp = '/addPhone?phoneId=' + query.phoneId;
+    const temp = `/addPhone?phoneId=${query.phoneId}`;
     history.push(temp);
   };
 
@@ -186,14 +190,14 @@ export default function PhoneDetailComponent() {
   const DeletePhoneDetail = () => {
     if (state.deletePhone) {
       const methodName = 'phones/delete';
-      const parameters = 'id=' + query.phoneId;
+      const parameters = `id=${query.phoneId}`;
       DeleteApiCall(methodName, parameters)
         .then((response) => {
           state.toastMessage = response.message;
           setOpen(false);
           state.deletePhone = false;
           setOpened(true);
-          setTimeout(function () {
+          setTimeout(() => {
             homeScreen();
           }, 2000);
         })
@@ -238,8 +242,10 @@ export default function PhoneDetailComponent() {
                 <p className="textHeader">
                   <IconButton aria-label="delete" onClick={() => Back()}>
                     <ArrowBackIcon fontSize="large" />
-                  </IconButton>{' '}
-                  Phone Detail{' '}
+                  </IconButton>
+                  {' '}
+                  Phone Detail
+                  {' '}
                 </p>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -260,20 +266,56 @@ export default function PhoneDetailComponent() {
               <Grid item xs={12} sm={3} md={3} lg={3}>
                 <img
                   className="imageWidth2"
-                  src={BASE_URL + '/uploads/' + state.image}
+                  src={`${BASE_URL}/uploads/${state.image}`}
                   alt={state.image}
                 />
               </Grid>
               <Grid item xs={12} sm={9} md={9} lg={9} className="Margin8px">
-                <p className="textPEx"> {state.phoneDeta.memory.internal} </p>
-                <p className="textPEx"> {jsonParser(state.phoneDeta.mainCamera).quad} </p>
-                <p className="textPEx"> {jsonParser(state.phoneDeta.selfieCamera).dual} </p>
-                <p className="textPEx"> {jsonParser(state.phoneDeta.tests).batteryLife} </p>
-                <p className="textPEx"> {jsonParser(state.phoneDeta.platefrom).os} </p>
-                <p className="textPEx"> {jsonParser(state.phoneDeta.mainCamera).cpu} </p>
-                <p className="textPEx"> {jsonParser(state.phoneDeta.featurs).sensors} </p>
-                <p className="textPEx"> {jsonParser(state.phoneDeta.misc).model} </p>
-                <p className="textPEx"> {jsonParser(state.phoneDeta.misc).price} </p>
+                <p className="textPEx">
+                  {' '}
+                  {state.phoneDeta.memory.internal}
+                  {' '}
+                </p>
+                <p className="textPEx">
+                  {' '}
+                  {jsonParser(state.phoneDeta.mainCamera).quad}
+                  {' '}
+                </p>
+                <p className="textPEx">
+                  {' '}
+                  {jsonParser(state.phoneDeta.selfieCamera).dual}
+                  {' '}
+                </p>
+                <p className="textPEx">
+                  {' '}
+                  {jsonParser(state.phoneDeta.tests).batteryLife}
+                  {' '}
+                </p>
+                <p className="textPEx">
+                  {' '}
+                  {jsonParser(state.phoneDeta.platefrom).os}
+                  {' '}
+                </p>
+                <p className="textPEx">
+                  {' '}
+                  {jsonParser(state.phoneDeta.mainCamera).cpu}
+                  {' '}
+                </p>
+                <p className="textPEx">
+                  {' '}
+                  {jsonParser(state.phoneDeta.featurs).sensors}
+                  {' '}
+                </p>
+                <p className="textPEx">
+                  {' '}
+                  {jsonParser(state.phoneDeta.misc).model}
+                  {' '}
+                </p>
+                <p className="textPEx">
+                  {' '}
+                  {jsonParser(state.phoneDeta.misc).price}
+                  {' '}
+                </p>
               </Grid>
               {/* <Grid item xs={12} sm={12} md={5} lg={5}>
                               .
@@ -309,7 +351,10 @@ export default function PhoneDetailComponent() {
                 <p className="secoundHeading"> Technology </p>
               </Grid>
               <Grid item xs={12} sm={8} md={8} lg={8}>
-                <p className="detailText">{state.phoneDeta.networkTechnology} </p>
+                <p className="detailText">
+                  {state.phoneDeta.networkTechnology}
+                  {' '}
+                </p>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <Divider />
@@ -331,7 +376,12 @@ export default function PhoneDetailComponent() {
                   </Moment>
                 </p>
                 <p className="detailText ptag2">
-                  <span>{state.status} . Release </span>
+                  <span>
+                    {state.status}
+                    {' '}
+                    . Release
+                    {' '}
+                  </span>
                   <Moment format="MMMM DD YYYY">{state.releaseDate}</Moment>
                 </p>
               </Grid>
@@ -351,7 +401,11 @@ export default function PhoneDetailComponent() {
                 <p className="secoundHeading ptag2"> SIM </p>
               </Grid>
               <Grid item xs={12} sm={8} md={8} lg={8}>
-                <p className="detailText ptag2">{jsonParser(state.phoneDeta.body).dimensions} mm</p>
+                <p className="detailText ptag2">
+                  {jsonParser(state.phoneDeta.body).dimensions}
+                  {' '}
+                  mm
+                </p>
                 <p className="detailText ptag2">{jsonParser(state.phoneDeta.body).wight}</p>
                 <p className="detailText ptag2">{jsonParser(state.phoneDeta.body).build}</p>
                 <p className="detailText ptag2">{jsonParser(state.phoneDeta.body).sim}</p>
@@ -622,19 +676,17 @@ export default function PhoneDetailComponent() {
       <Snackbar
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'center'
+          horizontal: 'center',
         }}
         open={toast}
         autoHideDuration={2000}
         onClose={handleClosed}
         message={state.toastMessage}
-        action={
-          <React.Fragment>
-            <IconButton size="small" aria-label="close" color="primary" onClick={handleClosed}>
-              <CloseIcon fontSize="small" />
-            </IconButton>
-          </React.Fragment>
-        }
+        action={(
+          <IconButton size="small" aria-label="close" color="primary" onClick={handleClosed}>
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        )}
       />
     </div>
   );

@@ -1,0 +1,99 @@
+.container {
+  width: 250px;
+  height: 200px;
+}
+.box {
+  display: inline-block;
+  vertical-align: top;
+  width: 85px;
+  height: 85px;
+}
+
+.imageWidth {
+  width: 85px;
+}
+.content {
+  display: inline-block;
+  vertical-align: top;
+}
+.title,
+.sub-title {
+  margin: 0;
+  padding: 3px 10px 3px 0;
+}
+.title {
+  font-size: 14px;
+  font-weight: 500;
+}
+.sub-title {
+  font-weight: bold;
+  color: #3f3f3f;
+}
+.img {
+  background: url(http://placehold.it/100/25);
+  width: 100px;
+  height: 25px;
+  border: 5px solid #ebeaae;
+}
+
+.textP {
+  margin-block-start: 0em !important;
+  margin-block-end: 0em !important;
+  font-size: 14px;
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.textHeader {
+  /* margin-block-start: 0em!important; */
+  margin-block-end: 0em !important;
+  font-size: 22px;
+}
+
+.textPEx {
+  font-size: 13px;
+  font-weight: 700;
+  word-break: break-all;
+}
+
+.navColor1 {
+  background-color: #bdbdbd !important;
+  text-align: center;
+}
+.navColor {
+  background-color: burlywood !important;
+  text-align: center;
+}
+.mainHeading {
+  color: brown;
+  font-size: 20px;
+  font-weight: 600;
+  /* text-align: center; */
+}
+
+.secoundHeading {
+  font-size: 16px;
+  color: black;
+  font-weight: 600;
+}
+.detailText {
+  font-size: 14px;
+  color: black;
+}
+
+.margin5 {
+  margin-top: 5px;
+}
+
+.marginMain {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.imageWidth {
+  width: 100px;
+}
+
+.imageWidth2 {
+  width: 200px;
+}

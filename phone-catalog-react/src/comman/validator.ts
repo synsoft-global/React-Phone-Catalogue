@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable no-useless-escape */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 
@@ -51,9 +52,8 @@ export const validatePhonenumber = (inputtxt: string) => {
  * @author Virendra Yadav
  */
 
-export const validateAddres = (value: string) => value.match(/^(?!\d+$)(?:[a-zA-Z0-9][a-zA-Z0-9 .'"-_)(@&$]*)?$/i)
-// return value.match(/^(?!\d+$)\w+\S+$/i);
-;
+export const validateAddres = (value: string) => value.match(/^(?!\d+$)(?:[a-zA-Z0-9][a-zA-Z0-9 .'"-_)(@&$]*)?$/i);
+// return value.match(/^(?!\d+$)\w+\S+$/i);;
 
 /**
  * Defining  regex function that alphabets and numbers

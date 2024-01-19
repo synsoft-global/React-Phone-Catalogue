@@ -1,16 +1,18 @@
 # phone-catalogue-react-nodejs
 
-# Phone Catalog listing where user can add phone details with image and show it in list form with pagination with also edit and delete functionality
+## Overview
+
+Phone Catalog listing where user can add phone details with image and show it in list form with pagination with also edit and delete functionality
 
 ## `API` directory contains server side coding using `Nodejs express js and mysql`.
 
-### `phone-catalog-react` directory contains front end code for Phone catalog view which is developed using `ReactJS`
+## `phone-catalog-react` directory contains front end code for Phone catalog view which is developed using `ReactJS`
 
-### For setting up APIs on your local
+## For setting up APIs on your local
 
-#### create a database with name `Phone_catalog`
+create a database with name `Phone_catalog`
 
-##### Update mysql user credentials under `db-config.js` which is under `API` directory.
+Update mysql user credentials under `db-config.js` which is under `API` directory.
 
 You can either import data from the 'Phone_catalog.sql' which is located at the root of this git repository in your mysql database, it will give you some dummy data to test the application or set up a blank database you can run follwing commands:
 

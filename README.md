@@ -3,10 +3,17 @@
 ## Overview
 
 Phone Catalog listing where user can add phone details with image and show it in list form with pagination with also edit and delete functionality
+`API` directory contains server side coding using `Nodejs express js and mysql`.
+`phone-catalog-react` directory contains front end code for Phone catalog view which is developed using `ReactJS`
 
-## `API` directory contains server side coding using `Nodejs express js and mysql`.
+## Technology Used
 
-## `phone-catalog-react` directory contains front end code for Phone catalog view which is developed using `ReactJS`
+- Minimum Nodejs 14+
+- ReactJS
+- Express
+- MySQL
+- Node.js
+- Sequilize
 
 ## For setting up APIs on your local
 
